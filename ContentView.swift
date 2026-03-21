@@ -1,3 +1,4 @@
+Swift
 
 import SwiftUI
 
@@ -5,7 +6,8 @@ import SwiftUI
 struct CalendarApp: App {
     var body: some Scene {
         WindowGroup {
-            ContentView()
+            Text("Calendar")
+                .font(.largeTitle)
         }
     }
 }
