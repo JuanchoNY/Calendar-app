@@ -18,7 +18,7 @@ struct ContentView: View {
                     .padding()
                 
                 Button("Add Event") {
-                    let newEvent = Event(title: newTitle, date: Date())
+                    let newEvent = Event(title: newTitle, date: selectedDate)
                     events.append(newEvent)
                     newTitle = ""
                 }
