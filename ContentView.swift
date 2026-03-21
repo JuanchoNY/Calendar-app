@@ -25,7 +25,7 @@ struct ContentView: View {
             newTitle = ""
         }
 
-        if events.isEmpty {
+        if events.filter({ Calendar.current.isDate($0.date, inSameDayAs: selectedDate) }).isEmpty {
             Text("No events yet")
                 .foregroundStyle(.gray)
 }
