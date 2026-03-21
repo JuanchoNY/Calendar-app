@@ -23,7 +23,7 @@ struct ContentView: View {
                     newTitle = ""
                 }
                 
-                List(events) { event in
+                List(events.filter { Calendar.current.isDate($0.date, inSameDayAs: selectedDate) }) { event in
                     Text(event.title)
                 }
             }
