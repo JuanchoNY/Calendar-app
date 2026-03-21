@@ -8,29 +8,31 @@ struct ContentView: View {
     @State private var selectedDate = Date()
     var body: some View {
         NavigationStack {
-            VStack {
+    VStack {
+        DatePicker("Select Date", selection: $selectedDate, displayedComponents: .date)
+            .padding()
 
-                DatePicker("Select Date", selection: $selectedDate, displayedComponents: .date)
-                    .padding()
+        TextField("New Event", text: $newTitle)
+            .padding(.horizontal)
+            .textFieldStyle(.roundedBorder)
+            .padding()
 
-                   TextField("New Event", text: $newTitle)
-                    .padding(.horizontal)
-                    .textFieldStyle(.roundedBorder)
-                    .padding()
+        Spacer()
 
-                Spacer()
-                Button("Add Event") {
-                    let newEvent = Event(title: newTitle, date: selectedDate)
-                    events.append(newEvent)
-                    newTitle = ""
-                }
-                
-                List(events.filter { Calendar.current.isDate($0.date, inSameDayAs: selectedDate) }) { event in
-                    Text(event.title)
-                }
+        Button("Add Event") {
+            let newEvent = Event(title: newTitle, date: selectedDate)
+            events.append(newEvent)
+            newTitle = ""
+        }
+
+        List(events.filter { Calendar.current.isDate($0.date, inSameDayAs: selectedDate) }) { event in
+            VStack(alignment: .leading) {
+                Text(event.title)
+                Text(event.date.formatted(date: .abbreviated, time: .omitted))
+                    .font(.caption)
+                    .foregroundStyle(.gray)
             }
-            .navigationTitle("My Calendar")
         }
     }
+    .navigationTitle("My Calendar")
 }
- 
