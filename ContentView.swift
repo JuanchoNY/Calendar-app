@@ -4,7 +4,8 @@ struct ContentView: View {
     
     @State private var events: [Event] = []
     @State private var newTitle: String = ""
-    
+
+    @State private var selectedDate = Date()
     var body: some View {
         NavigationStack {
             VStack {
