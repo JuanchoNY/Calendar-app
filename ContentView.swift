@@ -19,7 +19,7 @@ struct ContentView: View {
                     newTitle = ""
                 }
                 
-                List(events, id: \.title) { event in
+                List(events) { event in
                     Text(event.title)
                 }
             }
