@@ -25,12 +25,16 @@ struct ContentView: View {
             newTitle = ""
         }
 
-        List(events.filter { Calendar.current.isDate($0.date, inSameDayAs: selectedDate) }) { event in
-            VStack(alignment: .leading) {
-                Text(event.title)
-                Text(event.date.formatted(date: .abbreviated, time: .omitted))
-                    .font(.caption)
-                    .foregroundStyle(.gray)
+        if events.isEmpty {
+            Text("No events yet")
+                .foregroundStyle(.gray)
+}
+            List(events.filter { Calendar.current.isDate($0.date, inSameDayAs: selectedDate) }) { event in
+                VStack(alignment: .leading) {
+                    Text(event.title)
+                    Text(event.date.formatted(date: .abbreviated, time: .omitted))
+                        .font(.caption)
+                        .foregroundStyle(.gray)
             }
         }
     }
