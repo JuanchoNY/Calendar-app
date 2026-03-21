@@ -14,6 +14,7 @@ struct ContentView: View {
                     .padding()
 
                    TextField("New Event", text: $newTitle)
+                    .padding(.horizontal)
                     .textFieldStyle(.roundedBorder)
                     .padding()
 
