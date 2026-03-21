@@ -16,7 +16,8 @@ struct ContentView: View {
                    TextField("New Event", text: $newTitle)
                     .textFieldStyle(.roundedBorder)
                     .padding()
-                
+
+                Spacer()
                 Button("Add Event") {
                     let newEvent = Event(title: newTitle, date: selectedDate)
                     events.append(newEvent)
