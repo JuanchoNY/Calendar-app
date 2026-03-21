@@ -9,8 +9,11 @@ struct ContentView: View {
     var body: some View {
         NavigationStack {
             VStack {
-                
-                TextField("New Event", text: $newTitle)
+
+                DatePicker("Select Date", selection: $selectedDate, displayedComponents: .date)
+                    .padding()
+
+                   TextField("New Event", text: $newTitle)
                     .textFieldStyle(.roundedBorder)
                     .padding()
                 
