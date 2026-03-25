@@ -1,8 +1,6 @@
 import SwiftUI
 
-
 struct ContentView: View {
-
     @State private var events: [Event] = []
     @State private var newTitle: String = ""
     @State private var selectedDate = Date()
@@ -10,15 +8,6 @@ struct ContentView: View {
     var body: some View {
         NavigationStack {
             VStack {
-
-                HStack {
-                    ForEach(["S","M","T","W","T","F","S"], id: \.self) { day in
-                    Text(day)
-                        .frame(maxWidth: .infinity)
-                        .font(.caption)
-    }
-}
-                        .padding(.horizontal)
                 HStack {
                     Button("<") {
                         selectedDate = Calendar.current.date(byAdding: .month, value: -1, to: selectedDate) ?? selectedDate
@@ -36,6 +25,25 @@ struct ContentView: View {
                         selectedDate = Calendar.current.date(byAdding: .month, value: 1, to: selectedDate) ?? selectedDate
                     }
                 }
+
+                HStack {
+                    ForEach(["S", "M", "T", "W", "T", "F", "S"], id: \.self) { day in
+                        Text(day)
+                            .frame(maxWidth: .infinity)
+                            .font(.caption)
+                    }
+                }
+                .padding(.horizontal)
+
+                LazyVGrid(columns: Array(repeating: GridItem(.flexible()), count: 7)) {
+                    ForEach(1...30, id: \.self) { day in
+                        Text("\(day)")
+                            .frame(maxWidth: .infinity, minHeight: 40)
+                            .background(Color.gray.opacity(0.1))
+                            .cornerRadius(5)
+                    }
+                }
+                .padding(.horizontal)
 
                 DatePicker("Select Date", selection: $selectedDate, displayedComponents: .date)
                     .padding()
