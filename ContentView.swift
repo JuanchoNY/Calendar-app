@@ -20,6 +20,7 @@ struct ContentView: View {
         Spacer()
 
         Button("Add Event") {
+            guard !newTitle.trimmingCharacters(in: .whitespaces).isEmpty else { return }
             let newEvent = Event(title: newTitle, date: selectedDate)
             events.append(newEvent)
             newTitle = ""
