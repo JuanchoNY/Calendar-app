@@ -39,5 +39,6 @@ struct ContentView: View {
             }
         }
     }
-    .navigationTitle("My Calendar")
+                    Text(selectedDate.formatted(.dateTime.month(.wide).year()))
+                        .font(.title)
 }
