@@ -12,6 +12,14 @@ struct ContentView: View {
             VStack {
 
                 HStack {
+                    ForEach(["S","M","T","W","T","F","S"], id: \.self) { day in
+                    Text(day)
+                        .frame(maxWidth: .infinity)
+                        .font(.caption)
+    }
+}
+                        .padding(.horizontal)
+                HStack {
                     Button("<") {
                         selectedDate = Calendar.current.date(byAdding: .month, value: -1, to: selectedDate) ?? selectedDate
                     }
