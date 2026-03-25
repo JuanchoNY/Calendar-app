@@ -41,4 +41,5 @@ struct ContentView: View {
     }
                     Text(selectedDate.formatted(.dateTime.month(.wide).year()))
                         .font(.title)
+                        .padding(.top)
 }
